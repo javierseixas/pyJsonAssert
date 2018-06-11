@@ -2,6 +2,8 @@
 
 This project aims to be a library for facilitating API testing.
 
+[![Build Status](https://travis-ci.org/javierseixas/pyJsonAssert.svg?branch=master)](https://travis-ci.org/javierseixas/pyJsonAssert)
+
 ## Reason to be
 
 I've been trying to find a library for testing APIs in python, which in my point of view requires to compare expected jsons with given jsons, as libraries like [PHP Matcher](https://github.com/coduo/php-matcher) or [JSONassert](https://github.com/skyscreamer/JSONassert) do.
