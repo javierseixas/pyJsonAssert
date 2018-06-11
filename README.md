@@ -1,6 +1,6 @@
 # PyJsonAssert
 
-This project aims to be a library for facilitating API testing.
+This project aims to be a library for facilitating REST API testing.
 
 [![Build Status](https://travis-ci.org/javierseixas/pyJsonAssert.svg?branch=master)](https://travis-ci.org/javierseixas/pyJsonAssert)
 
@@ -31,6 +31,18 @@ current = {"animal": "dog", "object": "table"}
 
 # Will assert
 json_assert(expected, current, allow_unexpected_fields=True, allow_missing_fields=False)
+```
+
+## Running tests
+```
+python -m unittest discover tests
+```
+
+
+## Building the package
+```
+python setup.py sdist bdist_wheel
+twine upload -r test dist/*
 ```
 
 ## TODO
