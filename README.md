@@ -33,6 +33,17 @@ current = {"animal": "dog", "object": "table"}
 json_assert(expected, current, allow_unexpected_fields=True, allow_missing_fields=False)
 ```
 
+## Running tests
+```
+python -m unittest discover tests
+```
+
+
+## Building the package
+```
+python setup.py bdist_wheel
+```
+
 ## TODO
 * Add custom message parameter in the assertion
 * Enable patterns for being able to match types, besides the exact value (like [PHP Matcher patterns](https://github.com/coduo/php-matcher#available-patterns))
