@@ -16,10 +16,12 @@ setup(
     url='https://github.com/javierseixas/pyJsonAssert',
     keywords=['json', 'api', 'testing', 'assert', 'assertion', 'comparing'],
     classifiers=[
-        'Programming Language :: Python :: 2.7'
-        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Development Status :: 2 - Pre-Alpha',
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: MIT License'
     ],
     install_requires=[
         'jsondiff>=1.1'
