@@ -9,7 +9,7 @@ My impossibility to find a library with these features, encourage me to do my ow
 
 ## Functionality
 
-```
+```python
 from pyjsonassert import json_assert
 
 expected = {"animal": "dog"}
@@ -17,12 +17,11 @@ current = {"animal": "cat"}
 
 # Will fail
 json_assert(expected, current)
-
 ```
 
 You can also use some flags for strict comparison:
 
-```
+```python
 from pyjsonassert import json_assert
 
 expected = {"animal": "dog", "place": "home"}
