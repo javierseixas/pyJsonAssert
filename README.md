@@ -1,6 +1,6 @@
 # PyJsonAssert
 
-This project aims to be a library for facilitating API testing.
+This project aims to be a library for facilitating REST API testing.
 
 [![Build Status](https://travis-ci.org/javierseixas/pyJsonAssert.svg?branch=master)](https://travis-ci.org/javierseixas/pyJsonAssert)
 

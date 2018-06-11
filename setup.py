@@ -9,7 +9,7 @@ setup(
     name='pyJsonAssert',
     packages=find_packages(exclude=['tests']),
     version=version,
-    description='Facilitates Json asserts in API testing',
+    description='Facilitates Json asserts in REST API testing',
     author='Javier Seixas',
     author_email='dev@javierseixas.com',
     license='MIT',
