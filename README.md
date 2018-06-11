@@ -41,7 +41,8 @@ python -m unittest discover tests
 
 ## Building the package
 ```
-python setup.py bdist_wheel
+python setup.py sdist bdist_wheel
+twine upload -r test dist/*
 ```
 
 ## TODO
