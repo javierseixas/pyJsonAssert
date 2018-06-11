@@ -11,8 +11,8 @@ differences = diff({'a': 1, 'b': 2, 'd': 5}, {'b': 3, 'c': 4, 'd': 6}, syntax='s
 # Allowing missing fields
 # Ignoring $delete
 
-def assert_json(first_json, second_json, allow_unexpected_fields=True, allow_missing_fields=True):
-    differences = json.loads(diff(first_json, second_json, syntax='symmetric', dump=True))
+def assert_json(expected_json, current_json, allow_unexpected_fields=True, allow_missing_fields=False):
+    differences = json.loads(diff(expected_json, current_json, syntax='symmetric', dump=True))
 
     reserved_keynames = ["$delete", "$insert"]
 
