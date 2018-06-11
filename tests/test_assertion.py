@@ -1,5 +1,5 @@
 import unittest
-from pyjsonassert.do import assert_json
+from pyjsonassert import assert_json
 
 
 class TestJsonAssert(unittest.TestCase):
