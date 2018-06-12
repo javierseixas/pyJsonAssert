@@ -40,8 +40,16 @@ python -m unittest discover tests
 
 
 ## Building the package
+Build the distributions:
 ```
 python setup.py sdist bdist_wheel
+```
+Upload to pypi:
+```
+twine upload dist/*
+```
+Upload to test.pypi:
+```
 twine upload -r test dist/*
 ```
 
