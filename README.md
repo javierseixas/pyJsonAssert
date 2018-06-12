@@ -54,5 +54,6 @@ twine upload -r test dist/*
 ```
 
 ## TODO
+* Fix conflict with travis: jobs per version and deploy to pypi. After first success deploy, the other fail because dist is already uploaded.
 * Add custom message parameter in the assertion
 * Enable patterns for being able to match types, besides the exact value (like [PHP Matcher patterns](https://github.com/coduo/php-matcher#available-patterns))
