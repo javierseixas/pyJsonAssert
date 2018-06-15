@@ -18,6 +18,7 @@ jobs:
   include:
     - stage: deploy
       python: 3.6
+      if: tag =~ /v?(\d+\.)?(\d+\.)?(\*|\d+)$/
 
 deploy:
   # If you need to deploy files Travis has built, use the next line
