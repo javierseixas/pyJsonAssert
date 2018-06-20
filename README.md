@@ -3,6 +3,7 @@
 This project aims to be a library for facilitating REST API testing.
 
 [![Build Status](https://travis-ci.org/javierseixas/pyJsonAssert.svg?branch=master)](https://travis-ci.org/javierseixas/pyJsonAssert)
+[![Coverage Status](https://coveralls.io/repos/github/javierseixas/pyJsonAssert/badge.svg?branch=master)](https://coveralls.io/github/javierseixas/pyJsonAssert?branch=master)
 
 ## Reason to be
 
