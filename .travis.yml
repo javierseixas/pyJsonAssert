@@ -10,9 +10,11 @@ cache: pip
 
 install:
   - pip install -r requirements.txt
+  - pip install -r dev-requirements.txt
+  - pip install coveralls
 
 script:
-  - python -m unittest discover tests
+  - coverage run --source=python -m unittest discover tests
 
 jobs:
   include:
@@ -39,3 +41,11 @@ jobs:
         user: ${PYPI_USER}
         # Use the following if you don't have Travis CLI
         password : ${PYPI_PASSWORD}
+
+after_success:
+- pip freeze
+- coveralls
+
+notifications:
+  email:
+    on_success: change
