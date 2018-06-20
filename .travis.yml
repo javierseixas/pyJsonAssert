@@ -14,7 +14,7 @@ install:
   - pip install coveralls
 
 script:
-  - coverage run --source=python -m unittest discover tests
+  - coverage run --source=. -m unittest discover -s tests/
 
 jobs:
   include:
