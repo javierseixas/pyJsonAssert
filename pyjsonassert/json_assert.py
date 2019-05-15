@@ -17,11 +17,11 @@ def assert_json(expected_json, current_json, allow_unexpected_fields=True, allow
 
     if not allow_missing_fields:
         if '$delete' in differences:
-            raise ValueError('Some fields are missing')
+            raise Exception('Some fields are missing')
 
     if not allow_unexpected_fields:
         if '$insert' in differences:
-            raise ValueError('There are fields not expected')
+            raise Exception('There are fields not expected')
 
     differences = process_differences_with_patterns(differences)
 
@@ -32,7 +32,7 @@ def assert_json(expected_json, current_json, allow_unexpected_fields=True, allow
             del copied_differences[keyword]
 
     if len(copied_differences) > 0:
-        raise ValueError('Json documents doesn\'t match: {}'.format(copied_differences))
+        raise Exception('Json documents doesn\'t match: {}'.format(copied_differences))
 
 
 def process_differences_with_patterns(differences):
