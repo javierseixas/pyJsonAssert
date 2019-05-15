@@ -41,6 +41,10 @@ class TestJsonAssert(unittest.TestCase):
         assert_json(self.json_3, self.json_1, True, True)
         assert_json(self.json_str_3, self.json_str_1, True, True)
 
+    def test_it_should_assert_when_using_string_pattern(self):
+
+        assert_json(self.json_string_pattern, self.json_1)
+
 
 
 

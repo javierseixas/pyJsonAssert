@@ -1,5 +1,6 @@
 from jsondiff import diff
 import json
+import re
 
 
 def assert_json(expected_json, current_json, allow_unexpected_fields=True, allow_missing_fields=False):
@@ -22,11 +23,26 @@ def assert_json(expected_json, current_json, allow_unexpected_fields=True, allow
         if '$insert' in differences:
             raise ValueError('There are fields not expected')
 
-    copied_differencies = differences.copy()
+    differences = process_differences_with_patterns(differences)
+
+    copied_differences = differences.copy()
 
     for keyword in reserved_keynames:
-        if keyword in copied_differencies:
-            del copied_differencies[keyword]
+        if keyword in copied_differences:
+            del copied_differences[keyword]
 
-    if len(copied_differencies) > 0:
-        raise ValueError('Json documents doesn\'t match: {}'.format(copied_differencies))
+    if len(copied_differences) > 0:
+        raise ValueError('Json documents doesn\'t match: {}'.format(copied_differences))
+
+
+def process_differences_with_patterns(differences):
+    keys_matched_by_pattern = []
+    for key, value in differences.items():
+        if type(value)==list and value[0] == "@string@" and isinstance(value[1], str):
+            if re.search(r"^.+$", value[1]):
+                keys_matched_by_pattern.append(key)
+
+    for matched_key in keys_matched_by_pattern:
+        differences.pop(matched_key, None)
+
+    return differences
