@@ -26,6 +26,11 @@ class TestJsonAssert(unittest.TestCase):
             "color": "blue"
         }
     }}
+    json_very_complex_2 = {"animal": {
+        "eyes": {
+            "color": 2
+        }
+    }}
     json_very_complex_string_pattern = {"animal": {
         "eyes": {
             "color": "@string@"
@@ -68,13 +73,17 @@ class TestJsonAssert(unittest.TestCase):
         assert_json(self.json_3, self.json_1, True, True)
         assert_json(self.json_str_3, self.json_str_1, True, True)
 
+    # Testing patterns
+
     def test_it_should_assert_when_using_string_pattern(self):
 
         assert_json(self.json_string_pattern, self.json_1)
         assert_json(self.json_complex_string_pattern, self.json_complex_1)
         assert_json(self.json_very_complex_string_pattern, self.json_very_complex_1)
 
+    def test_it_should_fail_when_using_string_pattern_compares_with_a_number(self):
 
+        self.assertRaises(Exception, assert_json, self.json_very_complex_string_pattern, self.json_very_complex_2)
 
 
 if __name__ == '__main__':
