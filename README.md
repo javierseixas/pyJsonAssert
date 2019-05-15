@@ -40,6 +40,20 @@ python -m unittest discover tests
 ```
 
 
+## Release new version
+
+This packages has configured an CI delivery flow using travis. For publishing new releases correctly in travis, it will be necessary to tag the release appropriately.
+
+**NOTICE**: Remember to update the version manually in the `pyjsonassert/__init__.py` file.
+
+Steps:
+
+1. Change version in `pyjsonassert/__init__.py` manually.
+2. `git push origin master`
+3. `git tag <version>`. `<version>` should correspond to the indicated in step 1.
+4. `git push --tags`. Travis will only publish new package version in Pypi when processing a pushed tag.
+
+
 ## Building the package
 Build the distributions:
 ```
@@ -54,11 +68,6 @@ Upload to test.pypi:
 twine upload -r test dist/*
 ```
 
-## Release new version
-
-This packages has configured an CI delivery flow using travis. For publishing new releases correctly in travis, it will be necessary to tag the release appropriately.
-
-**NOTICE**: Remember to update the version manually in the `pyjsonassert/__init__.py` file.
 
 ## TODO
 * Fix conflict with travis: jobs per version and deploy to pypi. After first success deploy, the other fail because dist is already uploaded.
