@@ -1,1 +1,1 @@
-jsondiff
+jsondiff==1.1.2

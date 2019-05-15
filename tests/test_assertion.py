@@ -6,6 +6,31 @@ class TestJsonAssert(unittest.TestCase):
     json_1 = {"animal": "dog"}
     json_2 = {"animal": "cat"}
     json_3 = {"animal": "dog", "object": "table"}
+    json_string_pattern = {"animal": "@string@"}
+
+    json_complex_1 = {"animal": {
+        "paws": 4,
+        "color": "black"
+    }}
+    json_complex_2 = {"animal": {
+        "paws": 4,
+        "color": "white"
+    }}
+    json_complex_string_pattern = {"animal": {
+        "paws": 4,
+        "color": "@string@"
+    }}
+
+    json_very_complex_1 = {"animal": {
+        "eyes": {
+            "color": "blue"
+        }
+    }}
+    json_very_complex_string_pattern = {"animal": {
+        "eyes": {
+            "color": "@string@"
+        }
+    }}
 
     json_str_1 = "{\"animal\": \"dog\"}"
     json_str_2 = "{\"animal\": \"cat\"}"
@@ -15,11 +40,13 @@ class TestJsonAssert(unittest.TestCase):
 
         assert_json(self.json_1, self.json_1)
         assert_json(self.json_str_1, self.json_str_1)
+        assert_json(self.json_complex_1, self.json_complex_1)
 
     def test_it_should_fail_when_jsons_have_same_key_and_different_value(self):
 
         self.assertRaises(Exception, assert_json, self.json_1, self.json_2)
         self.assertRaises(Exception, assert_json, self.json_str_1, self.json_str_2)
+        self.assertRaises(Exception, assert_json, self.json_complex_1, self.json_complex_2)
 
     def test_it_should_assert_when_jsons_match_one_key_but_current_json_contains_another_key_value(self):
 
@@ -44,6 +71,8 @@ class TestJsonAssert(unittest.TestCase):
     def test_it_should_assert_when_using_string_pattern(self):
 
         assert_json(self.json_string_pattern, self.json_1)
+        assert_json(self.json_complex_string_pattern, self.json_complex_1)
+        assert_json(self.json_very_complex_string_pattern, self.json_very_complex_1)
 
 
 

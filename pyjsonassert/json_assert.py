@@ -38,7 +38,11 @@ def assert_json(expected_json, current_json, allow_unexpected_fields=True, allow
 def process_differences_with_patterns(differences):
     keys_matched_by_pattern = []
     for key, value in differences.items():
-        if type(value)==list and value[0] == "@string@" and isinstance(value[1], str):
+        if isinstance(value, dict):
+            result = process_differences_with_patterns(value)
+            if len(result) == 0:
+                keys_matched_by_pattern.append(key)
+        elif type(value) == list and value[0] == "@string@" and isinstance(value[1], str):
             if re.search(r"^.+$", value[1]):
                 keys_matched_by_pattern.append(key)
 
