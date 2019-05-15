@@ -34,6 +34,23 @@ current = {"animal": "dog", "object": "table"}
 assert_json(expected, current, allow_unexpected_fields=True, allow_missing_fields=False)
 ```
 
+### Patterns
+
+In several scenarios it is not known all the specific values in an response json, but still is required to test that an specific field with a value is returned.
+
+For that cases, the patterns are introduced:
+
+* `@string@`
+
+    ```python
+    expected = {"animal": "@string@"}
+    current = {"animal": "dog"}
+    
+    # Will assert
+    assert_json(expected, current)
+    ```
+    
+
 ## Running tests
 ```
 python -m unittest discover tests

@@ -42,6 +42,7 @@ def process_differences_with_patterns(differences):
             result = process_differences_with_patterns(value)
             if len(result) == 0:
                 keys_matched_by_pattern.append(key)
+        # TODO Here it should handle patterns like @uuid@, @number@, @*@ and others
         elif type(value) == list and value[0] == "@string@" and isinstance(value[1], str):
             if re.search(r"^.+$", value[1]):
                 keys_matched_by_pattern.append(key)
