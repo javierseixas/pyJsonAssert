@@ -54,6 +54,12 @@ Upload to test.pypi:
 twine upload -r test dist/*
 ```
 
+## Release new version
+
+This packages has configured an CI delivery flow using travis. For publishing new releases correctly in travis, it will be necessary to tag the release appropriately.
+
+**NOTICE**: Remember to update the version manually in the `pyjsonassert/__init__.py` file.
+
 ## TODO
 * Fix conflict with travis: jobs per version and deploy to pypi. After first success deploy, the other fail because dist is already uploaded.
 * Add custom message parameter in the assertion
