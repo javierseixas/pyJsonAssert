@@ -13,25 +13,25 @@ My impossibility to find a library with these features, encourage me to do my ow
 ## Functionality
 
 ```python
-from pyjsonassert import json_assert
+from pyjsonassert import assert_json
 
 expected = {"animal": "dog"}
 current = {"animal": "cat"}
 
 # Will fail
-json_assert(expected, current)
+assert_json(expected, current)
 ```
 
 You can also use some flags for strict comparison:
 
 ```python
-from pyjsonassert import json_assert
+from pyjsonassert import assert_json
 
 expected = {"animal": "dog", "place": "home"}
 current = {"animal": "dog", "object": "table"}
 
 # Will assert
-json_assert(expected, current, allow_unexpected_fields=True, allow_missing_fields=False)
+assert_json(expected, current, allow_unexpected_fields=True, allow_missing_fields=False)
 ```
 
 ## Running tests
