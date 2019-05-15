@@ -29,4 +29,4 @@ def assert_json(expected_json, current_json, allow_unexpected_fields=True, allow
             del copied_differencies[keyword]
 
     if len(copied_differencies) > 0:
-        raise ValueError('Json documents doesn\'t match')
+        raise ValueError('Json documents doesn\'t match: {}'.format(copied_differencies))
