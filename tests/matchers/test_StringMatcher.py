@@ -1,8 +1,8 @@
 import unittest
-from pyjsonassert import patterns
+from pyjsonassert.matchers import StringMatcher
 
 
-class TestJsonAssert(unittest.TestCase):
+class TestStringMatcher(unittest.TestCase):
 
     string = "asfasdf"
     number_as_string = "12"
@@ -15,14 +15,14 @@ class TestJsonAssert(unittest.TestCase):
 
     def test_should_identify_an_string(self):
 
-        assert patterns.is_string(self.string) is True
+        assert StringMatcher.match(self.string) is True
 
     def test_should_consider_string_a_number_that_comes_as_string_type(self):
 
-        assert patterns.is_string(self.number_as_string) is True
+        assert StringMatcher.match(self.number_as_string) is True
 
     def test_should_return_false_if_varible_is_not_and_string(self):
 
-        assert patterns.is_string(self.number) is False
-        assert patterns.is_string(self.float) is False
-        assert patterns.is_string(self.boolean) is False
+        assert StringMatcher.match(self.number) is False
+        assert StringMatcher.match(self.float) is False
+        assert StringMatcher.match(self.boolean) is False
