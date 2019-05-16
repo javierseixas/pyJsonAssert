@@ -7,4 +7,4 @@ class StringMatcher(object):
 
     @classmethod
     def match(self, value):
-        return (type(value) == str or type(value) == unicode) and not not re.search(r"^.+$", value)
+        return type(value) == str and not not re.search(r"^.+$", value)

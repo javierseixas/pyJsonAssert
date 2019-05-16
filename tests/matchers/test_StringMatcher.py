@@ -10,9 +10,6 @@ class TestStringMatcher(unittest.TestCase):
     float = 12.2
     boolean = False
 
-    uuid = "ba65edf1-3952-40be-b816-c917d46c9078"
-    bad_uuid = "ba65edf1-3952-40be-b86-c917d46c907"
-
     def test_should_identify_an_string(self):
 
         assert StringMatcher.match(self.string) is True
