@@ -1,7 +1,19 @@
 from jsondiff import diff
+from pyjsonassert.matchers import *
 import json
-import re
-from patterns import is_string
+
+matchers = {
+    "@string@": StringMatcher(),
+    "@uuid@": UuidMatcher()
+}
+
+
+def resolve_matcher(pattern):
+    return matchers[pattern]
+
+
+def has_matcher(pattern):
+    return pattern in matchers
 
 
 def assert_json(expected_json, current_json, allow_unexpected_fields=True, allow_missing_fields=False):
@@ -43,13 +55,11 @@ def process_differences_with_patterns(differences):
             result = process_differences_with_patterns(value)
             if len(result) == 0:
                 keys_matched_by_pattern.append(key)
-        # TODO Here it should handle patterns like @uuid@, @number@, @*@ and others
-        # identify the type is a list, so it is the result of a difference
-        # identify the given pattern
-        # apply the corresponding pattern match
-        elif type(value) == list and value[0] == "@string@":
-            if is_string(value[1]):
-                keys_matched_by_pattern.append(key)
+
+        elif type(value) == list:
+            if has_matcher(value[0]):
+                if resolve_matcher(value[0]).match(value[1]):
+                    keys_matched_by_pattern.append(key)
 
     for matched_key in keys_matched_by_pattern:
         differences.pop(matched_key, None)
